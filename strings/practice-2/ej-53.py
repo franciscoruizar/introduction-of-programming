@@ -1,27 +1,31 @@
-'''
-generar clave .
+"""
+Ej 53.-generar clave .
 Hacer un programa que solicite el ingreso de el nombre, el apellido y el año de nacimiento de una persona.
 Generar una clave provisoria de la sig.forma: La primera letra del nombre (en minuscula), las 2 ultimas
 letras del apellido (en mayusculas) y un numero que será igual a la edad de la persona al 31 de diciembre
 de 2019 .-
 Ejemplo: Juan Perez 1999 === >> jEZ20
-'''
+"""
+nombre = input("Ingrese el nombre de la persona: ")
+apellido = input("Ingrese el apellido de la persona: ")
+nacimiento = int(input("Ingrese el año de nacimiento de la persona (AAAA): "))
 
-name = input("Ingrese su nombre: ")
-lastname = input("Ingrese su apellido: ")
-age = int(input("Ingrese su ano de nacimiento (AAAA): ",))
+code = ""
 
-max_age = 2019
+MAX_AGE = 2019
 
-if len(name) > 0 and len(lastname) > 0 and age <= max_age:
-    code = ""
+for item in nombre:
+    if len(code) == 0 or code == "":
+        code = code + item.lower()
 
-    code = code + name[0].lower()
-    code = code + lastname[len(lastname) - 2].upper() + \
-        lastname[len(lastname) - 1].upper()
-    code = code + str(max_age - age)
+apellido_aux = ""
 
-    print(name, " ", lastname, " ", age, ": ", code)
+for item in apellido:
+    if len(apellido_aux) >= (len(apellido) - 2):
+        code = code + item.upper()
+    else:
+        apellido_aux = apellido_aux + item
 
-else:
-    print("Los datos ingresados fueron erroneos")
+code = code + str(MAX_AGE - nacimiento)
+
+print(nombre, " ", apellido, " ", nacimiento, ": ", code)

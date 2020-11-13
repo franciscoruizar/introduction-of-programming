@@ -1,26 +1,25 @@
-'''
+"""
+Ej 51.-Código libtro.
 Hacer un programa que solicite el título de un libro y la cantidad de páginas. Debe informar uncódigo para
 regfistro en el catálogo de la biblioteca formado por las iniciales de cada una de las palabras del título,
 altermando una mayúscula y una minúscula (comenzando con mayúscula), Ejemplo:
 título = “Del Imperio al Desamparo”
 debe mostrar: “El codigo del libro Del Imperio al Desamparo es DiAd”
-'''
+"""
 
-title = input("Ingrese el título del libro: ")
+titulo = input("Ingrese el titulo del libro: ")
+cant_pags = input("Ingrese la cant de pags del libro: ")
 
-words = title.split(" ")
-
+letra_anterior = ""
 code = ""
-is_last_letter_mayus = False
-for item in words:
+for item in titulo:
+    if len(code) == 0 or code == "":
+        code = code + item.upper()
+    elif letra_anterior == " ":
+        if len(code) % 2 == 0:
+            code = code + item.upper()
+        else:
+            code = code + item.lower()
+    letra_anterior = item
 
-    letter = item[0]
-
-    if is_last_letter_mayus:
-        code = code + letter.lower()
-    else:
-        code = code + letter.upper()
-
-    is_last_letter_mayus = not is_last_letter_mayus
-
-print("El código del libro es: ", code)
+print("El codigo del libro ", titulo, "es: ", code)

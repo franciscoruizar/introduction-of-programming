@@ -1,24 +1,26 @@
-'''
-Las 2 palabras más largas
+"""
+Ej 54- Las 2 palabras más largas
 Hacer un programa que reciba una frase y muestre las 2 palabras más largas (si hubiera más de las
 necesarias, mostrar 2 cualeslquiera de ellas).
 ejemplo:
 frase="Google dio a conocer una nueva herramienta de su buscador" "
 debe mostrar: “Las 2 palabras mas largas son: herramienta - buscador”
-'''
+"""
+frase = input("Ingrese la frase: ")
 
-frase = input("Ingrese su frase: ")
+palabra_larga = ""
+segunda_palabra_larga = ""
+palabra_actual = ""
+for item in frase:
+    if item == " ":
+        if len(palabra_actual) > len(palabra_larga):
+            palabra_larga = palabra_actual
+            segunda_palabra_larga = palabra_larga
+        elif len(palabra_actual) > len(segunda_palabra_larga):
+            segunda_palabra_larga = palabra_actual
+        palabra_actual = ""
+    else:
+        palabra_actual = palabra_actual + item
 
-palabra_1 = ""
-palabra_2 = ""
-
-palabras = frase.split(" ")
-
-for item in palabras:
-    if len(item) >= len(palabra_1):
-        palabra_2 = palabra_1
-        palabra_1 = item
-    elif len(item) >= len(palabra_2):
-        palabra_2 = item
-
-print(palabra_1, "-", palabra_2)
+print("Las dos palabras mas largas son: ",
+      palabra_larga, "-", segunda_palabra_larga)

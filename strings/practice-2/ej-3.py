@@ -1,18 +1,19 @@
-'''
+"""
+3- Tiene mayúsculas
 Hacer un programa que reciba una frase e indique si tiene alguna letra mayúscula.
 Ejemplo:
 Ushuaia es la capital de Tierra del Fuego >> la frase tiene mayúsculas.
 ushuaia es la capital de tierra del fuego >> No tiene mayusculas.
-
-'''
+"""
 
 frase = input("Ingrese su frase: ")
-mayusculas = 0
+
+tiene_mayus = False
 for item in frase:
     if item >= 'A' and item <= 'Z':
-        mayusculas += 1
+        tiene_mayus = True
 
-if mayusculas == 0:
-    print("No tiene mayusculas")
+if tiene_mayus:
+    print("La frase tiene mayusculas")
 else:
-    print("Tiene mayusculas")
+    print("La frase no tiene mayusculas")
